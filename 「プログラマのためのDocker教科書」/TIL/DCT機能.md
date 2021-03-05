@@ -10,6 +10,7 @@ $ `export DOCKER_CONTENT_TRUST=1`
 DCTを有効にすると、イメージをダウンロードするときに以下のようにイメージの検証が行われる。
 
 $` docker image pull ubuntu:latest`
+
 ![image](https://user-images.githubusercontent.com/63034711/109967539-e5aca380-7d34-11eb-84da-30f2a13ff037.png)
 
 
