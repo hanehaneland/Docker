@@ -141,7 +141,7 @@ docker container createコマンドは、コンテナを作成するだけで、
 |host|コンテナがホストOSのネットワークを使う|
 |NETWORK|ユーザ定義ネットワークを使う|
 
-ユーザ定義ネットワークは、`docker network create`で作成する。
+ユーザ定義ネットワークは、[`docker network create`](#docker-network-create-オプション-ネットワーク)で作成する。
 
 ### リソースを指定してコンテナを生成/実行
 `docker container run [リソースオプション] [イメージ名] [:タグ名] [引数]`
@@ -206,6 +206,9 @@ docker container createコマンドは、コンテナを作成するだけで、
 ## docker container pause [コンテナ識別子]
 一時停止を行う
 
+## docker container unpause [コンテナ識別子]
+中断コンテナの再開
+
 ## docker container ls [オプション]
 コンテナの稼働状態を一覧で確認するコマンド
 
@@ -230,3 +233,49 @@ docker container createコマンドは、コンテナを作成するだけで、
 |オプション|説明|
 |---|---|
 |--time, -t|コンテナの停止時間を指定する(デフォルトは10秒)|
+
+<br>
+
+# Dockerコンテナのネットワーク
+Dockerコンテナ同志が通信するとき、Dockerネットワークを介して行う。
+
+## docker network ls [オプション]
+Dockerネットワークの一覧を確認するコマンド
+
+|オプション|説明|
+|---|---|
+|-f, --filter=[]※3|出力をフィルタする|
+|--no-trunc|詳細を出力する|
+|-q, --quiet|ネットワークIDのを表示する|
+
+※3フィルタリングで利用できるキー
+|値|説明|
+|---|---|
+|driver|ドライバーの設定|
+|id|ネットワークID|
+|label|ネットワークに設定されたラベル|
+|name|ネットワーク名|
+|scope|ネットワークのスコープ(swarm/giobal/local)|
+|type|ネットワークのタイプ(ユーザ定義ネットワークcustom/定義済みネットワークbuiltin)|
+
+## docker network create [オプション] ネットワーク
+新しいネットワークを作成するコマンド
+
+|オプション|説明|
+|---|---|
+|--driver, -d|ネットワークブリッジまたはオーバレイ(デフォルトはbridge)|
+|--ip-range|コンテナに割り当てるIPアドレスのレンジを指定|
+|--subnet|サブネットをCIDR形式で指定|
+|--ipv6|IPv6ネットワークを有効にするかどうか(true/false)|
+|-label|ネットワークに設定するラベル|
+
+## docker network connect [オプション] [ネットワーク] [コンテナ]
+
+|オプション|説明|
+|---|---|
+|--ip|IPv4アドレス|
+|--ip6|IPv6アドレス|
+|--alias|エイリアス名|
+|--link|他のコンテナへのリンク|
+
+
