@@ -313,8 +313,62 @@ Webサーバのようにバックグラウンドで実行しているコンテ�
 ## docker container top
 稼働しているコンテナで実行されているプロセスを確認するコマンド
 
-## docker container top
-稼働しているコンテナのプロセス確認をするコマンド
+## docker container port
+稼働しているコンテナで実行しているプロセスが転送されているポートを確認するコマンド
+
+## docker container rename
+コンテナの名前を変更するコマンド
+![image](https://user-images.githubusercontent.com/63034711/111508109-ab102580-878e-11eb-80be-b4c3d7e5fa26.png)
+
+## docker container cp
+コンテナ内のファイルをホストにコピーするコマンド
+![image](https://user-images.githubusercontent.com/63034711/111508454-11954380-878f-11eb-809f-0d802d52a872.png)
+
+↑訂正<br>
+ホストの/tmp/etcにコピーするとき➡︎ホストの/tmp/にコピーするとき
+
+## docker container diff [コンテナ識別子]
+コンテナ内でなんらかの操作を行い、コンテナがイメージから生成されたときからの差分を確認するコマンド
+
+<br>
+
+# Dockerイメージの作成
+Dockerコンテナは、Dockerイメージをもとに作成するが、逆にDockerコンテナをもとにして、Dockerイメージを作成することもできる。
+
+## docker container commit [オプション] [コンテナ識別子] [イメージ名[:タグ名]]
+
+|オプション|説明|
+|---|---|
+|--author, -a|作成者を指定する(例:ASA SHIHO＜shiho@asa.yokohama＞)|
+|--message, -m|メッセージを指定する|
+|--change, -c|コミット例のDockerfile命令を指定|
+|--pausem, -p|コンテナを一時停止してコミットする|
+
+## docker container seport [コンテナ識別子]
+tarファイルの作成をするコマンド
+
+Dockerでは、動作しているコンテナのディレクトリ/ファイル群をまとめてtarファイルを作成することができる。このtarファイルをもとにして、別のサーバでコンテナを稼働させることができる。
+
+## docker image import [ファイルまたはURL] - [イメージ名[:タグ名]]
+LinuxのOSイメージのディレクトリ/ファイル群からDockerイメージを作成することができる。
+
+## docker image save [オプション] [保存ファイル名] [イメージ名]
+Dockerイメージをtarファイルに保存できるコマンド
+
+保存するファイル名の指定は、-oオプションを指定する。
+
+## docker image load [オプション]
+tarファイルからイメージを生成できるコマンド
+
+読み込むファイルの指定は、-iオプションを指定する。
+
+## docker system prune [オプション]
+使用していないイメージ/コンテナ/ボリューム/ネットワークを一括で削除できるコマンド
+
+|オプション|説明|
+|---|---|
+|--all, -a|使用していないリソースを全て削除する|
+|--force, -f|強制的に削除する|
 
 # 目次
 
