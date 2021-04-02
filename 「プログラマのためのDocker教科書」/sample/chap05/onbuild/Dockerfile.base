@@ -1,8 +1,9 @@
 #  ベースイメージの設定
+# Ubuntu17.10をベースイメージとして、Webサーバの実行環境を作成する。
 FROM ubuntu:17.10
 
 # Nginx のインストール
-RUN apt-get -y update && apt-get -y upgrade 
+RUN apt-get -y update && apt-get -y upgrade
 RUN apt-get -y install nginx
 
 #  ポート指定
