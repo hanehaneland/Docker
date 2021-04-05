@@ -1,13 +1,17 @@
+# Compose定義ファイルの先頭にはバージョンを指定する。
 version: '3.3'
 services:
-  # WebServer config
-  webserver:
-    build: .
-    ports:
-     - "80:80"
-    depends_on:
-     - redis
+# WebServer config
+# webserverサービスは、カレンとディレクトリにあるDockerfileに定義した構成のイメージをビルド(build:)し、外部に対して80ポートを公開(ports:)してコンテナを起動する。
+webserver:
+  build: .
+  ports:
+    - "80:80"
+  # また、このコンテナは、redisサービスに依存(depends_on)している。
+  depends_on:
+    - redis
 
-  # Redis config
-  redis:
-    image: redis:4.0
+# Redis config
+# redisサービスは、Docker Hubに公開されているRedis公式イメージである「redis」のバージョン4.0をベースイメージ(image:)としてコンテナを起動している。
+redis:
+  image: redis:4.0
